@@ -14,7 +14,7 @@
         <router-link to="/box">Go to Box</router-link>
       </li>
     </ul>
-    <span>{{getCount}}</span>
+    <span>{{$store.state.count}}</span>
     <button @click="handleClick('aaa')">点击加一</button>
     <button @click="handleAsyncClick">点击一秒钟后加一</button>
     <router-view></router-view>
@@ -23,6 +23,7 @@
 
 <script>
 import Headder from './index/Headder'
+import axios from 'axios';
 export default {
   name: 'HelloWorld',
   data () {
@@ -31,9 +32,10 @@ export default {
     }
   },
   computed: {
-    getCount(){
-      return this.$store.state.count;
-    }
+    // getCount(){
+    //   console.log(this);
+    //   return this.$store.state.count;
+    // }
   },
   components:{
     Headder,
@@ -58,6 +60,9 @@ export default {
     }
   },
   created(){
+    axios.get('api/weather/city/101010100').then((data)=>{
+      console.log('北京天气：',data.data);
+    })
     console.log(this,'vue 实例');
     console.log(this.$store.state.count);
   }

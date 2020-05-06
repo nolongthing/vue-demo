@@ -13,17 +13,17 @@ module.exports = {
     /* 设置服务器代理 */
     proxyTable: {
       "/api": {
-        target: "http://t.weather.sojson.com", // 要访问的接口域名
+        target: "https://api.imjad.cn/cloudmusic", // 要访问的接口域名
         ws: false, // 是否启用websockets
         changeOrigin: true, //开启代理：在本地会创建一个虚拟服务端，然后发送请求的数据，并同时接收请求的数据，这样服务端和服务端进行数据的交互就不会有跨域问题
         pathRewrite: {
-          // "^/api": ""
+          "^/api": ""
         }
       }
     },
 
     // Various Dev Server settings
-    host: '172.28.220.54', // can be overwritten by process.env.HOST
+    host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
